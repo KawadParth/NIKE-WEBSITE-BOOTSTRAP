@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nike Sale | Official Store</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="icon" type="image/x-icon"
+        href="https://static.vecteezy.com/system/resources/previews/014/414/661/non_2x/nike-swoosh-logo-on-transparent-background-free-vector.jpg">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        .navbar-brand img {
+            height: 40px;
+        }
+
+        .nav-icons {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            background-color: #f2f2f2;
+            border-radius: 20px;
+            padding: 5px 10px;
+        }
+
+        .search-box input {
+            border: none;
+            background: none;
+            outline: none;
+            padding-left: 8px;
+            width: 150px;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 70px;
+            /* Height of navbar */
+            left: 0;
+            width: 250px;
+            height: calc(100vh - 70px);
+            overflow-y: auto;
+            border-right: 1px solid #ddd;
+            padding: 20px;
+            background-color: #fff;
+        }
+
+        .content {
+            margin-left: 270px;
+            padding: 20px;
+        }
+
+        .accordion-button {
+            font-size: 0.95rem;
+            padding: 8px 0;
+            background: none;
+            box-shadow: none !important;
+        }
+
+        .accordion-body a {
+            display: block;
+            text-decoration: none;
+            color: #333;
+            padding: 4px 0;
+            font-size: 0.9rem;
+        }
+
+        .accordion-body a:hover {
+            text-decoration: underline;
+        }
+
+        .product-card img {
+            width: 100%;
+            border-radius: 10px;
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover img {
+            transform: scale(1.03);
+        }
+
+        .bestseller {
+            color: #e74c3c;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #27ae60;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111;
+            color: #ccc;
+            padding: 50px 0 20px;
+            margin-top: 50px;
+        }
+
+        footer a {
+            color: #ccc;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #fff;
+        }
+
+        .footer-title {
+            color: #fff;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #333;
+            margin-top: 30px;
+            padding-top: 20px;
+            font-size: 14px;
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top" style="height: 70px;">
+        <div class="container-fluid px-4">
+            <a class="navbar-brand" href="index.html">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" alt="Nike Logo">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav gap-3">
+                    <!-- <li class="nav-item"><a class="nav-link" href="#">New & Featured</a></li> -->
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="men.html" data-bs-toggle="dropdown">Men</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="men.html">Shoes</a></li>
+                            <li><a class="dropdown-item" href="men.html">Clothing</a></li>
+                            <li><a class="dropdown-item" href="men.html">Accessories</a></li>
+                            <li><a class="dropdown-item" href="men.html">New Arrivals</a></li>
+                            <li><a class="dropdown-item" href="men.html">Best Sellers</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="women.html" data-bs-toggle="dropdown">Women</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="women.html">Shoes</a></li>
+                            <li><a class="dropdown-item" href="women.html">Clothing</a></li>
+                            <li><a class="dropdown-item" href="women.html">Accessories</a></li>
+                            <li><a class="dropdown-item" href="women.html">Yoga Collection</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="kids.html" data-bs-toggle="dropdown">Kids</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="kids.html">Boys</a></li>
+                            <li><a class="dropdown-item" href="kids.html">Girls</a></li>
+                            <li><a class="dropdown-item" href="kids.html">Toddlers</a></li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item"><a class="nav-link active fw-bold" href="sale.html">Sale</a></li>
+                    <li class="nav-item"><a class="nav-link" href="SNKRS.html">SNKRS</a></li>
+                </ul>
+            </div>
+
+            <div class="nav-icons ms-auto">
+                <div class="search-box">
+                    <i class="bi bi-search"></i>
+                    <input type="text" placeholder="Search">
+                </div>
+                <i class="bi bi-heart" style="font-size: 1.3rem;"></i>
+                <i class="bi bi-bag" style="font-size: 1.3rem;"></i>
+            </div>
+        </div>
+    </nav>
+
+    <div class="sidebar">
+        <h5 class="fw-bold mb-3">Sale & Offers</h5>
+
+        <div class="accordion" id="sidebarAccordion">
+            <div class="accordion-item border-0">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed ps-0" data-bs-toggle="collapse"
+                        data-bs-target="#saleCategory">
+                        Categories on Sale
+                    </button>
+                </h2>
+                <div id="saleCategory" class="accordion-collapse collapse show">
+                    <div class="accordion-body ps-3">
+                        <a href="#">Shoes</a>
+                        <a href="#">T-Shirts</a>
+                        <a href="#">Hoodies</a>
+                        <a href="#">Jackets</a>
+                        <a href="#">Pants & Shorts</a>
+                        <a href="#">Accessories</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item mt-3 border-0">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed ps-0" data-bs-toggle="collapse"
+                        data-bs-target="#discounts">
+                        Discount Range
+                    </button>
+                </h2>
+                <div id="discounts" class="accordion-collapse collapse show">
+                    <div class="accordion-body ps-3">
+                        <a href="#">Up to 30% Off</a>
+                        <a href="#">30–50% Off</a>
+                        <a href="#">Above 50% Off</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4>Nike Sale Collection</h4>
+            <div>
+                <button class="btn btn-outline-secondary btn-sm">Hide Filters</button>
+                <button class="btn btn-outline-secondary btn-sm">Sort By ▾</button>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <img src="hoodies.avif" alt="Nike Hoodie">
+                    <div class="mt-2">
+                        <p class="bestseller mb-0">-30% Off</p>
+                        <h6 class="mb-1">Nike Sportswear</h6>
+                        <p class="mb-0">Men's Pullover Hoodie</p>
+                        <p class="price">₹2,595 <span class="text-decoration-line-through text-muted">₹3,695</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <img src="tshirt.avif" alt="Nike T-Shirt">
+                    <div class="mt-2">
+                        <p class="bestseller mb-0">-25% Off</p>
+                        <h6 class="mb-1">Nike Dri-FIT</h6>
+                        <p class="mb-0">Men's Running T-Shirt</p>
+                        <p class="price">₹1,295 <span class="text-decoration-line-through text-muted">₹1,795</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <img src="shorts.avif" alt="Nike Shorts">
+                    <div class="mt-2">
+                        <p class="bestseller mb-0">-40% Off</p>
+                        <h6 class="mb-1">Nike Flex</h6>
+                        <p class="mb-0">Men's Training Shorts</p>
+                        <p class="price">₹1,495 <span class="text-decoration-line-through text-muted">₹2,495</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <img src="puff.avif" alt="Nike Jacket">
+                    <div class="mt-2">
+                        <p class="bestseller mb-0">-50% Off</p>
+                        <h6 class="mb-1">Nike Therma-FIT</h6>
+                        <p class="mb-0">Men's Puffer Jacket</p>
+                        <p class="price">₹4,995 <span class="text-decoration-line-through text-muted">₹9,995</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <img src="https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/692cdb67-6709-4e93-953d-e6157edc3b13/AIR+FORCE+1+%2707.png"
+                        alt="Nike Pro Tights">
+                    <div class="mt-2">
+                        <p class="bestseller mb-0">-20% Off</p>
+                        <h6 class="mb-1">Nike Shoes</h6>
+                        <p class="mb-0">Men's Air Force 1</p>
+                        <p class="price">₹9,995 <span class="text-decoration-line-through text-muted">₹12,495</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <img src="https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/ce4a004d-2a6c-4fc2-aa73-6e4d98f3253f/AS+W+NK+SWIFT+DF+TANK+TOP.png"
+                        alt="Women's Dri-FIT 3/4-Length Fitness Tights">
+                    <div class="mt-2">
+                        <p class="bestseller mb-0">-30% Off</p>
+                        <h6 class="mb-1">Nike Pro</h6>
+                        <p class="mb-0">Women’s Dri-FIT 3/4-Length Fitness Tights</p>
+                        <p class="price">₹1,995 <span class="text-decoration-line-through text-muted">₹2,895</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <img src="https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/d98c9df3-a812-4307-8156-93a4e92e0171/AS+W+NK+24.7+DF+HZ+TOP+SOFT.png"
+                        alt="Women’s Jordan Brooklyn Pullover Hoodie">
+                    <div class="mt-2">
+                        <p class="bestseller mb-0">-25% Off</p>
+                        <h6 class="mb-1">Jordan Brooklyn</h6>
+                        <p class="mb-0">Women’s Pullover Hoodie</p>
+                        <p class="price">₹3,795 <span class="text-decoration-line-through text-muted">₹5,095</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <img src="https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/bf1b4765-03db-4808-bfae-30816467953e/AS+W+NSW+TF+SYNFL+METRO+STRT+P.png"
+                        alt="Women’s Fleece Pants">
+                    <div class="mt-2">
+                        <p class="bestseller mb-0">-40% Off</p>
+                        <h6 class="mb-1">Nike Club Fleece</h6>
+                        <p class="mb-0">Women’s Fleece Pants</p>
+                        <p class="price">₹3,295 <span class="text-decoration-line-through text-muted">₹5,495</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <img src="https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/e2bfb543-1649-47f7-9dbc-1c9712159539/G+NP+DF+2IN1+KNIT+SHORT.png"
+                        alt="Kids T-Shirt">
+                    <div class="mt-2">
+                        <p class="bestseller mb-0">-15% Off</p>
+                        <h6 class="mb-1">Nike Sportswear</h6>
+                        <p class="mb-0">Boys’ Graphic T-Shirt</p>
+                        <p class="price">₹1,395 <span class="text-decoration-line-through text-muted">₹1,695</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <img src="https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/b4fcd75e-d177-4cbe-9573-7910133a8c55/B+NSW+TCH+WVN+FZ+JKT+CB+SSNL.png"
+                        alt="Kids Hoodie">
+                    <div class="mt-2">
+                        <p class="bestseller mb-0">-30% Off</p>
+                        <h6 class="mb-1">Nike Club Fleece</h6>
+                        <p class="mb-0">Kids’ Pullover Hoodie</p>
+                        <p class="price">₹2,495 <span class="text-decoration-line-through text-muted">₹3,595</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <img src="https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/353962e9-f8d5-4beb-8005-a701b8fd23ca/G+NSW+TRACK+PNT+GX+STAR.png"
+                        alt="Kids Shorts">
+                    <div class="mt-2">
+                        <p class="bestseller mb-0">-20% Off</p>
+                        <h6 class="mb-1">Nike Dri-FIT</h6>
+                        <p class="mb-0">Kids’ Running Shorts</p>
+                        <p class="price">₹1,795 <span class="text-decoration-line-through text-muted">₹2,295</span></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="product-card">
+                    <img src="https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/7afc7103-26f4-406f-9a09-5b537268be76/G+NP+SWSH+BRA+SPORT+VNR.png"
+                        alt="Kids Tracksuit">
+                    <div classs="mt-2">
+                        <p class="bestseller mb-0">-35% Off</p>
+                        <h6 class="mb-1">Nike Tracksuit</h6>
+                        <p class="mb-0">Boys’ Full Set Tracksuit</p>
+                        <p class="price">₹3,495 <span class="text-decoration-line-through text-muted">₹5,395</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <h6 class="footer-title">Resources</h6>
+                    <p><a href="#">Find a Store</a></p>
+                    <p><a href="#">Become a Member</a></p>
+                    <p><a href="#">Send Us Feedback</a></p>
+                </div>
+
+                <div class="col-md-3">
+                    <h6 class="footer-title">Help</h6>
+                    <p><a href="#">Order Status</a></p>
+                    <p><a href="#">Delivery</a></p>
+                    <p><a href="#">Returns</a></p>
+                    <p><a href="#">Contact Us</a></p>
+                </div>
+
+                <div class="col-md-3">
+                    <h6 class="footer-title">Company</h6>
+                    <p><a href="#">About Nike</a></p>
+                    <p><a href="#">News</a></p>
+                    <p><a href="#">Careers</a></p>
+                </div>
+
+                <div class="col-md-3">
+                    <h6 class="footer-title">Social</h6>
+                    <a href="#"><i class="bi bi-facebook me-2"></i></a>
+                    <a href="#"><i class="bi bi-instagram me-2"></i></a>
+                    <a href="#"><i class="bi bi-twitter-x me-2"></i></a>
+                    <a href="#"><i class="bi bi-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-bottom text-center mt-4">
+                <p>© 2025 Nike, Inc. All Rights Reserved | Designed for demo purposes only</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
