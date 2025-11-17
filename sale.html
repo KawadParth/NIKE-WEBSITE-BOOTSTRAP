@@ -12,7 +12,6 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            overflow-x: hidden;
         }
 
         .navbar-brand img {
@@ -41,10 +40,10 @@
             width: 150px;
         }
 
+        /* DESKTOP Style: Fixed sidebar */
         .sidebar {
             position: fixed;
             top: 70px;
-            /* Height of navbar */
             left: 0;
             width: 250px;
             height: calc(100vh - 70px);
@@ -54,6 +53,7 @@
             background-color: #fff;
         }
 
+        /* DESKTOP Style: Content with margin */
         .content {
             margin-left: 270px;
             padding: 20px;
@@ -129,12 +129,54 @@
             font-size: 14px;
             color: #777;
         }
+
+        /*
+        --- RESPONSIVE STYLES ---
+        This query targets tablets and phones (screens below 992px)
+        */
+        @media (max-width: 991.98px) {
+
+            /* 1. Un-fix the sidebar and make it stack on top */
+            .sidebar {
+                position: static;
+                width: 100%;
+                height: auto;
+                overflow-y: visible;
+                border-right: none;
+                border-bottom: 1px solid #ddd;
+                top: auto;
+            }
+
+            /* 2. Remove the margin from content so it's full-width */
+            .content {
+                margin-left: 0;
+                padding: 15px;
+                /* Smaller padding for mobile */
+            }
+
+            /* 3. Style the nav icons for the mobile menu */
+            .navbar-collapse .nav-icons {
+                margin-top: 1rem;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .navbar-collapse .search-box {
+                width: 100%;
+            }
+
+            .navbar-collapse .search-box input {
+                width: 100%;
+                /* Make search input fill the box */
+            }
+        }
     </style>
 </head>
 
 <body>
 
-    <nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top" style="height: 70px;">
+    <nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
         <div class="container-fluid px-4">
             <a class="navbar-brand" href="index.html">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" alt="Nike Logo">
@@ -144,10 +186,8 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
 
-            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                <ul class="navbar-nav gap-3">
-                    <!-- <li class="nav-item"><a class="nav-link" href="#">New & Featured</a></li> -->
-
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav gap-3 mx-auto">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="men.html" data-bs-toggle="dropdown">Men</a>
                         <ul class="dropdown-menu">
@@ -181,16 +221,17 @@
                     <li class="nav-item"><a class="nav-link active fw-bold" href="sale.html">Sale</a></li>
                     <li class="nav-item"><a class="nav-link" href="SNKRS.html">SNKRS</a></li>
                 </ul>
+
+                <div class="nav-icons mt-3 mt-lg-0">
+                    <div class="search-box">
+                        <i class="bi bi-search"></i>
+                        <input type="text" placeholder="Search">
+                    </div>
+                    <i class="bi bi-heart" style="font-size: 1.3rem;"></i>
+                    <i class="bi bi-bag" style="font-size: 1.3rem;"></i>
+                </div>
             </div>
 
-            <div class="nav-icons ms-auto">
-                <div class="search-box">
-                    <i class="bi bi-search"></i>
-                    <input type="text" placeholder="Search">
-                </div>
-                <i class="bi bi-heart" style="font-size: 1.3rem;"></i>
-                <i class="bi bi-bag" style="font-size: 1.3rem;"></i>
-            </div>
         </div>
     </nav>
 
@@ -232,6 +273,21 @@
                     </div>
                 </div>
             </div>
+
+            <div class="accordion-item mt-3 border-0">
+                <h2 class="accordion-header">
+                    <button class="accordion-button collapsed ps-0" data-bs-toggle="collapse" data-bs-target="#gender">
+                        Gender
+                    </button>
+                </h2>
+                <div id="gender" class="accordion-collapse collapse">
+                    <div class="accordion-body ps-3">
+                        <a href="#">Men</a>
+                        <a href="#">Women</a>
+                        <a href="#">Kids</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -245,94 +301,101 @@
         </div>
 
         <div class="row g-4">
-            <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                 <div class="product-card">
                     <img src="hoodies.avif" alt="Nike Hoodie">
                     <div class="mt-2">
                         <p class="bestseller mb-0">-30% Off</p>
                         <h6 class="mb-1">Nike Sportswear</h6>
                         <p class="mb-0">Men's Pullover Hoodie</p>
-                        <p class="price">₹2,595 <span class="text-decoration-line-through text-muted">₹3,695</span></p>
+                        <p class="price">₹2,595 <span class="text-decoration-line-through text-muted fw-normal"
+                                style="font-size: 0.9rem; color: #888;">₹3,695</span></p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                 <div class="product-card">
                     <img src="tshirt.avif" alt="Nike T-Shirt">
                     <div class="mt-2">
                         <p class="bestseller mb-0">-25% Off</p>
                         <h6 class="mb-1">Nike Dri-FIT</h6>
                         <p class="mb-0">Men's Running T-Shirt</p>
-                        <p class="price">₹1,295 <span class="text-decoration-line-through text-muted">₹1,795</span></p>
+                        <p class="price">₹1,295 <span class="text-decoration-line-through text-muted fw-normal"
+                                style="font-size: 0.9rem; color: #888;">₹1,795</span></p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                 <div class="product-card">
                     <img src="shorts.avif" alt="Nike Shorts">
                     <div class="mt-2">
                         <p class="bestseller mb-0">-40% Off</p>
                         <h6 class="mb-1">Nike Flex</h6>
                         <p class="mb-0">Men's Training Shorts</p>
-                        <p class="price">₹1,495 <span class="text-decoration-line-through text-muted">₹2,495</span></p>
+                        <p class="price">₹1,495 <span class="text-decoration-line-through text-muted fw-normal"
+                                style="font-size: 0.9rem; color: #888;">₹2,495</span></p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                 <div class="product-card">
                     <img src="puff.avif" alt="Nike Jacket">
                     <div class="mt-2">
                         <p class="bestseller mb-0">-50% Off</p>
                         <h6 class="mb-1">Nike Therma-FIT</h6>
                         <p class="mb-0">Men's Puffer Jacket</p>
-                        <p class="price">₹4,995 <span class="text-decoration-line-through text-muted">₹9,995</span></p>
+                        <p class="price">₹4,995 <span class="text-decoration-line-through text-muted fw-normal"
+                                style="font-size: 0.9rem; color: #888;">₹9,995</span></p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                 <div class="product-card">
                     <img src="https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/692cdb67-6709-4e93-953d-e6157edc3b13/AIR+FORCE+1+%2707.png"
-                        alt="Nike Pro Tights">
+                        alt="Nike Shoes">
                     <div class="mt-2">
                         <p class="bestseller mb-0">-20% Off</p>
                         <h6 class="mb-1">Nike Shoes</h6>
                         <p class="mb-0">Men's Air Force 1</p>
-                        <p class="price">₹9,995 <span class="text-decoration-line-through text-muted">₹12,495</span></p>
+                        <p class="price">₹9,995 <span class="text-decoration-line-through text-muted fw-normal"
+                                style="font-size: 0.9rem; color: #888;">₹12,495</span></p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                 <div class="product-card">
                     <img src="https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/ce4a004d-2a6c-4fc2-aa73-6e4d98f3253f/AS+W+NK+SWIFT+DF+TANK+TOP.png"
-                        alt="Women's Dri-FIT 3/4-Length Fitness Tights">
+                        alt="Women's Dri-FIT">
                     <div class="mt-2">
                         <p class="bestseller mb-0">-30% Off</p>
                         <h6 class="mb-1">Nike Pro</h6>
-                        <p class="mb-0">Women’s Dri-FIT 3/4-Length Fitness Tights</p>
-                        <p class="price">₹1,995 <span class="text-decoration-line-through text-muted">₹2,895</span></p>
+                        <p class="mb-0">Women’s Dri-FIT Tights</p>
+                        <p class="price">₹1,995 <span class="text-decoration-line-through text-muted fw-normal"
+                                style="font-size: 0.9rem; color: #888;">₹2,895</span></p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                 <div class="product-card">
                     <img src="https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/d98c9df3-a812-4307-8156-93a4e92e0171/AS+W+NK+24.7+DF+HZ+TOP+SOFT.png"
-                        alt="Women’s Jordan Brooklyn Pullover Hoodie">
+                        alt="Women’s Jordan Hoodie">
                     <div class="mt-2">
                         <p class="bestseller mb-0">-25% Off</p>
                         <h6 class="mb-1">Jordan Brooklyn</h6>
                         <p class="mb-0">Women’s Pullover Hoodie</p>
-                        <p class="price">₹3,795 <span class="text-decoration-line-through text-muted">₹5,095</span></p>
+                        <p class="price">₹3,795 <span class="text-decoration-line-through text-muted fw-normal"
+                                style="font-size: 0.9rem; color: #888;">₹5,095</span></p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                 <div class="product-card">
                     <img src="https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/bf1b4765-03db-4808-bfae-30816467953e/AS+W+NSW+TF+SYNFL+METRO+STRT+P.png"
                         alt="Women’s Fleece Pants">
@@ -340,12 +403,13 @@
                         <p class="bestseller mb-0">-40% Off</p>
                         <h6 class="mb-1">Nike Club Fleece</h6>
                         <p class="mb-0">Women’s Fleece Pants</p>
-                        <p class="price">₹3,295 <span class="text-decoration-line-through text-muted">₹5,495</span></p>
+                        <p class="price">₹3,295 <span class="text-decoration-line-through text-muted fw-normal"
+                                style="font-size: 0.9rem; color: #888;">₹5,495</span></p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                 <div class="product-card">
                     <img src="https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/e2bfb543-1649-47f7-9dbc-1c9712159539/G+NP+DF+2IN1+KNIT+SHORT.png"
                         alt="Kids T-Shirt">
@@ -353,12 +417,13 @@
                         <p class="bestseller mb-0">-15% Off</p>
                         <h6 class="mb-1">Nike Sportswear</h6>
                         <p class="mb-0">Boys’ Graphic T-Shirt</p>
-                        <p class="price">₹1,395 <span class="text-decoration-line-through text-muted">₹1,695</span></p>
+                        <p class="price">₹1,395 <span class="text-decoration-line-through text-muted fw-normal"
+                                style="font-size: 0.9rem; color: #888;">₹1,695</span></p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                 <div class="product-card">
                     <img src="https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/b4fcd75e-d177-4cbe-9573-7910133a8c55/B+NSW+TCH+WVN+FZ+JKT+CB+SSNL.png"
                         alt="Kids Hoodie">
@@ -366,12 +431,13 @@
                         <p class="bestseller mb-0">-30% Off</p>
                         <h6 class="mb-1">Nike Club Fleece</h6>
                         <p class="mb-0">Kids’ Pullover Hoodie</p>
-                        <p class="price">₹2,495 <span class="text-decoration-line-through text-muted">₹3,595</span></p>
+                        <p class="price">₹2,495 <span class="text-decoration-line-through text-muted fw-normal"
+                                style="font-size: 0.9rem; color: #888;">₹3,595</span></p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                 <div class="product-card">
                     <img src="https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/353962e9-f8d5-4beb-8005-a701b8fd23ca/G+NSW+TRACK+PNT+GX+STAR.png"
                         alt="Kids Shorts">
@@ -384,7 +450,7 @@
                 </div>
             </div>
 
-            <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                 <div class="product-card">
                     <img src="https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/7afc7103-26f4-406f-9a09-5b537268be76/G+NP+SWSH+BRA+SPORT+VNR.png"
                         alt="Kids Tracksuit">

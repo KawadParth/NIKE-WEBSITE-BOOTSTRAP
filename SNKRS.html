@@ -4,7 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Changed title for SNKRS page -->
     <title>Nike SNKRS | Upcoming Drops</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
@@ -42,10 +41,10 @@
             width: 150px;
         }
 
+        /* DESKTOP Style: Fixed sidebar */
         .sidebar {
             position: fixed;
             top: 70px;
-            /* Height of navbar */
             left: 0;
             width: 250px;
             height: calc(100vh - 70px);
@@ -53,8 +52,10 @@
             border-right: 1px solid #ddd;
             padding: 20px;
             background-color: #fff;
+            z-index: 1000;
         }
 
+        /* DESKTOP Style: Content with margin */
         .content {
             margin-left: 270px;
             padding: 20px;
@@ -79,46 +80,45 @@
             text-decoration: underline;
         }
 
+        .product-card {
+            height: 100%;
+        }
+
         .product-card img {
             width: 100%;
             border-radius: 10px;
             transition: transform 0.3s;
-            background-color: #f8f8f8;
-            /* Added for better image framing */
+            background-color: #f6f6f6;
         }
 
         .product-card:hover img {
             transform: scale(1.03);
         }
 
-        /* --- NEW STATUS STYLES --- */
+        /* --- SNKRS SPECIFIC STYLES --- */
         .status-tag {
             font-weight: bold;
-            font-size: 0.9rem;
-            margin-bottom: 0;
+            font-size: 0.85rem;
+            margin-bottom: 2px;
+            text-transform: uppercase;
         }
 
         .status-sold-out {
-            color: #e74c3c;
-            /* Red */
+            color: #888; /* Grey for Sold Out looks cleaner */
         }
 
         .status-upcoming {
-            color: #3498db;
-            /* Blue */
+            color: #333; /* Black for upcoming */
         }
 
         .status-new {
-            color: #27ae60;
-            /* Green */
+            color: #ae2727; /* Dark Red for Just In/Heat */
         }
-
-        /* --- END NEW STYLES --- */
 
         .price {
             font-weight: bold;
-            color: #333;
-            /* Changed from green to default black/grey for SNKRS */
+            color: #111;
+            margin-top: 4px;
         }
 
         /* Footer */
@@ -151,13 +151,57 @@
             font-size: 14px;
             color: #777;
         }
+
+        /*
+        --- RESPONSIVE STYLES ---
+        Targets tablets and phones (screens below 992px)
+        */
+        @media (max-width: 991.98px) {
+            
+            /* 1. Un-fix the sidebar and make it stack on top */
+            .sidebar {
+                position: relative;
+                width: 100%;
+                height: auto;
+                overflow-y: visible;
+                border-right: none;
+                border-bottom: 1px solid #ddd;
+                top: auto;
+            }
+
+            /* 2. Remove the margin from content so it's full-width */
+            .content {
+                margin-left: 0;
+                padding: 15px; 
+            }
+
+            /* 3. Style the nav icons for the mobile menu */
+            .navbar-collapse .nav-icons {
+                margin-top: 1rem;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .navbar-collapse .search-box {
+                width: 100%;
+            }
+
+            .navbar-collapse .search-box input {
+                width: 100%; 
+            }
+            
+            .navbar-nav {
+                padding-bottom: 10px;
+                border-bottom: 1px solid #eee;
+            }
+        }
     </style>
 </head>
 
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top" style="height: 70px;">
+    <nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top" style="height: auto; min-height: 70px;">
         <div class="container-fluid px-4">
             <a class="navbar-brand" href="index.html">
                 <img src="https://upload.wikimedia.org/wikipedia/commons/a/a6/Logo_NIKE.svg" alt="Nike Logo">
@@ -168,9 +212,7 @@
             </button>
 
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                <ul class="navbar-nav gap-3">
-                    <!-- <li class="nav-item"><a class="nav-link" href="#">New & Featured</a></li> -->
-
+                <ul class="navbar-nav gap-3 mx-auto pt-3 pt-lg-0">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="men.html" data-bs-toggle="dropdown">Men</a>
                         <ul class="dropdown-menu">
@@ -201,25 +243,24 @@
                         </ul>
                     </li>
 
-                    <!-- Active class moved from Sale -->
                     <li class="nav-item"><a class="nav-link" href="sale.html">Sale</a></li>
-                    <!-- Active class added to SNKRS -->
                     <li class="nav-item"><a class="nav-link active fw-bold" href="SNKRS.html">SNKRS</a></li>
                 </ul>
-            </div>
-
-            <div class="nav-icons ms-auto">
-                <div class="search-box">
-                    <i class="bi bi-search"></i>
-                    <input type="text" placeholder="Search">
+                
+                <div class="nav-icons ms-lg-auto mt-3 mt-lg-0">
+                    <div class="search-box">
+                        <i class="bi bi-search"></i>
+                        <input type="text" placeholder="Search">
+                    </div>
+                    <div class="d-none d-lg-flex gap-3">
+                        <i class="bi bi-heart" style="font-size: 1.3rem;"></i>
+                        <i class="bi bi-bag" style="font-size: 1.3rem;"></i>
+                    </div>
                 </div>
-                <i class="bi bi-heart" style="font-size: 1.3rem;"></i>
-                <i class="bi bi-bag" style="font-size: 1.3rem;"></i>
             </div>
         </div>
     </nav>
 
-    <!-- Sidebar - ADAPTED FOR SNKRS -->
     <div class="sidebar">
         <h5 class="fw-bold mb-3">SNKRS Filters</h5>
 
@@ -277,7 +318,6 @@
         </div>
     </div>
 
-    <!-- Main Content - ADAPTED FOR SNKRS -->
     <div class="content">
         <div class="d-flex justify-content-between align-items-center mb-3">
             <h4>SNKRS: The Latest Drops</h4>
@@ -288,190 +328,187 @@
         </div>
 
         <div class="row g-4">
-            <!-- Product Cards Start - NEW CONTENT -->
-            <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                 <div class="product-card">
                     <img src="https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/5bd30c3e-63e8-4ac8-862a-ff141ab37e72/AIR+MAX+TL+2.5.png"
                         onerror="this.src='https://placehold.co/600x600/f0f0f0/ccc?text=Image+Not+Found'"
                         alt="Jordan 1 Chicago">
                     <div class="mt-2">
                         <p class="status-tag status-sold-out">Sold Out</p>
-                        <h6 class="mb-1">Air Jordan 1 High 'Chicago'</h6>
-                        <p class="mb-0">Men's Shoe</p>
+                        <h6 class="mb-1 text-truncate">Air Jordan 1 High 'Chicago'</h6>
+                        <p class="mb-0 text-muted small">Men's Shoe</p>
                         <p class="price">₹16,995</p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                 <div class="product-card">
                     <img src="https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/xa3j5pmlqu9lz6y1xbsb/NIKE+SHOX+TL.png"
                         onerror="this.src='https://placehold.co/600x600/f0f0f0/ccc?text=Image+Not+Found'"
                         alt="Dunk Low Panda">
                     <div class="mt-2">
                         <p class="status-tag status-sold-out">Sold Out</p>
-                        <h6 class="mb-1">Nike Dunk Low 'Panda'</h6>
-                        <p class="mb-0">Men's Shoe</p>
+                        <h6 class="mb-1 text-truncate">Nike Dunk Low 'Panda'</h6>
+                        <p class="mb-0 text-muted small">Men's Shoe</p>
                         <p class="price">₹8,995</p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                 <div class="product-card">
                     <img src="https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/9e608f62-74f6-4d2f-a614-c2fc1c529234/NIKE+AIR+MAX+PLUS.png"
                         onerror="this.src='https://placehold.co/600x600/f0f0f0/ccc?text=Image+Not+Found'"
                         alt="Air Max 1 '86">
                     <div class="mt-2">
                         <p class="status-tag status-new">Just In</p>
-                        <h6 class="mb-1">Air Max 1 '86 'Big Bubble'</h6>
-                        <p class="mb-0">Unisex Shoe</p>
+                        <h6 class="mb-1 text-truncate">Air Max 1 '86 'Big Bubble'</h6>
+                        <p class="mb-0 text-muted small">Unisex Shoe</p>
                         <p class="price">₹13,995</p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                 <div class="product-card">
                     <img src="https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/81d10257-65bc-45c1-8970-5449316928c6/AIR+JORDAN+1+RETRO+HIGH+OG.png"
                         onerror="this.src='https://placehold.co/600x600/f0f0f0/ccc?text=Image+Not+Found'"
                         alt="Jordan 4 Military Blue">
                     <div class="mt-2">
                         <p class="status-tag status-sold-out">Sold Out</p>
-                        <h6 class="mb-1">Air Jordan 4 'Military Blue'</h6>
-                        <p class="mb-0">Men's Shoe</p>
+                        <h6 class="mb-1 text-truncate">Air Jordan 4 'Military Blue'</h6>
+                        <p class="mb-0 text-muted small">Men's Shoe</p>
                         <p class="price">₹18,395</p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                 <div class="product-card">
                     <img src="https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/540653a2-a2aa-4e3a-8c33-6451f258946c/AIR+JORDAN+4+RETRO.png"
                         onerror="this.src='https://placehold.co/600x600/f0f0f0/ccc?text=Image+Not+Found'"
                         alt="Travis Scott Jordan 1">
                     <div class="mt-2">
                         <p class="status-tag status-upcoming">Upcoming (Nov 15)</p>
-                        <h6 class="mb-1">Travis Scott x Jordan 1 Low 'Elkins'</h6>
-                        <p class="mb-0">Men's Shoe</p>
+                        <h6 class="mb-1 text-truncate">Travis Scott x Jordan 1 Low</h6>
+                        <p class="mb-0 text-muted small">Men's Shoe</p>
                         <p class="price">₹13,595</p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                 <div class="product-card">
                     <img src="https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/89235dab-3047-41d2-af7b-d0a77f43fe6a/AIR+JORDAN+1+HIGH+G.png"
                         onerror="this.src='https://placehold.co/600x600/f0f0f0/ccc?text=Image+Not+Found'"
                         alt="Jordan 11 Gratitude">
                     <div class="mt-2">
                         <p class="status-tag status-sold-out">Sold Out</p>
-                        <h6 class="mb-1">Air Jordan 11 'Gratitude'</h6>
-                        <p class="mb-0">Men's Shoe</p>
+                        <h6 class="mb-1 text-truncate">Air Jordan 11 'Gratitude'</h6>
+                        <p class="mb-0 text-muted small">Men's Shoe</p>
                         <p class="price">₹19,295</p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                 <div class="product-card">
                     <img src="https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/a7982b6c-0379-4234-9133-379454cafb5d/JORDAN+TATUM+3+PF.png"
                         onerror="this.src='https://placehold.co/600x600/f0f0f0/ccc?text=Image+Not+Found'"
                         alt="Air Force 1 '07">
                     <div class="mt-2">
                         <p class="status-tag status-new">Just In</p>
-                        <h6 class="mb-1">Nike Air Force 1 '07</h6>
-                        <p class="mb-0">Men's Shoe</p>
+                        <h6 class="mb-1 text-truncate">Nike Air Force 1 '07</h6>
+                        <p class="mb-0 text-muted small">Men's Shoe</p>
                         <p class="price">₹9,695</p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                 <div class="product-card">
                     <img src="https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/0a43f60f-d0d4-4084-9e11-2e234732a7f3/KD18+SE+EP.png"
                         onerror="this.src='https://placehold.co/600x600/f0f0f0/ccc?text=Image+Not+Found'"
                         alt="Dunk Low Brazil">
                     <div class="mt-2">
                         <p class="status-tag status-new">Just In</p>
-                        <h6 class="mb-1">Nike Dunk Low 'Brazil'</h6>
-                        <p class="mb-0">Unisex Shoe</p>
+                        <h6 class="mb-1 text-truncate">Nike Dunk Low 'Brazil'</h6>
+                        <p class="mb-0 text-muted small">Unisex Shoe</p>
                         <p class="price">₹9,295</p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                 <div class="product-card">
                     <img src="https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/df0e16d3-004b-4406-9ccd-1bad0f6c04fc/PRIME+96+EP.png"
                         onerror="this.src='https://placehold.co/600x600/f0f0f0/ccc?text=Image+Not+Found'"
                         alt="Jordan 3 Green Glow">
                     <div class="mt-2">
                         <p class="status-tag status-new">Just In</p>
-                        <h6 class="mb-1">Air Jordan 3 'Green Glow'</h6>
-                        <p class="mb-0">Men's Shoe</p>
+                        <h6 class="mb-1 text-truncate">Air Jordan 3 'Green Glow'</h6>
+                        <p class="mb-0 text-muted small">Men's Shoe</p>
                         <p class="price">₹17,995</p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                 <div class="product-card">
                     <img src="https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/f68ec5fc-9d84-4ef8-8559-b3001d2f4045/LEBRON+XXII+BW+EP.png"
                         onerror="this.src='https://placehold.co/600x600/f0f0f0/ccc?text=Image+Not+Found'"
                         alt="Air Max Plus Drift">
                     <div class="mt-2">
                         <p class="status-tag status-new">Just In</p>
-                        <h6 class="mb-1">Nike Air Max Plus Drift</h6>
-                        <p class="mb-0">Men's Shoe</p>
+                        <h6 class="mb-1 text-truncate">Nike Air Max Plus Drift</h6>
+                        <p class="mb-0 text-muted small">Men's Shoe</p>
                         <p class="price">₹16,995</p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                 <div class="product-card">
                     <img src="https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/ebb8a31c-5098-48a1-a9af-af3eaad9929e/LEGEND+10+CLUB+FG%2FMG.png"
                         onerror="this.src='https://placehold.co/600x600/f0f0f0/ccc?text=Image+Not+Found'"
                         alt="Terminator High">
                     <div class="mt-2">
                         <p class="status-tag status-upcoming">Upcoming (Nov 20)</p>
-                        <h6 class="mb-1">Nike Terminator High 'Georgetown'</h6>
-                        <p class="mb-0">Men's Shoe</p>
+                        <h6 class="mb-1 text-truncate">Nike Terminator High</h6>
+                        <p class="mb-0 text-muted small">Men's Shoe</p>
                         <p class="price">₹11,895</p>
                     </div>
                 </div>
             </div>
 
-            <div class="col-sm-6 col-md-4 col-lg-3">
+            <div class="col-6 col-sm-6 col-md-4 col-lg-3">
                 <div class="product-card">
                     <img src="https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/a7af1728-0efb-4111-8ed2-816f9e00fb67/ZM+SUPERFLY+10+ELITE+KM+FG.png"
                         onerror="this.src='https://placehold.co/600x600/f0f0f0/ccc?text=Image+Not+Found'"
                         alt="Zoom Vomero 5">
                     <div class="mt-2">
                         <p class="status-tag status-new">Just In</p>
-                        <h6 class="mb-1">Nike Zoom Vomero 5</h6>
-                        <p class="mb-0">Unisex Shoe</p>
+                        <h6 class="mb-1 text-truncate">Nike Zoom Vomero 5</h6>
+                        <p class="mb-0 text-muted small">Unisex Shoe</p>
                         <p class="price">₹14,995</p>
                     </div>
                 </div>
             </div>
-            <!-- Product Cards End -->
         </div>
     </div>
 
-    <!-- Footer (Identical to other page) -->
     <footer>
         <div class="container">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-3 col-6">
                     <h6 class="footer-title">Resources</h6>
                     <p><a href="#">Find a Store</a></p>
                     <p><a href="#">Become a Member</a></p>
                     <p><a href="#">Send Us Feedback</a></p>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-3 col-6">
                     <h6 class="footer-title">Help</h6>
                     <p><a href="#">Order Status</a></p>
                     <p><a href="#">Delivery</a></p>
@@ -479,14 +516,14 @@
                     <p><a href="#">Contact Us</a></p>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-3 col-6">
                     <h6 class="footer-title">Company</h6>
                     <p><a href="#">About Nike</a></p>
                     <p><a href="#">News</a></p>
                     <p><a href="#">Careers</a></p>
                 </div>
 
-                <div class="col-md-3">
+                <div class="col-md-3 col-6">
                     <h6 class="footer-title">Social</h6>
                     <a href="#"><i class="bi bi-facebook me-2"></i></a>
                     <a href="#"><i class="bi bi-instagram me-2"></i></a>

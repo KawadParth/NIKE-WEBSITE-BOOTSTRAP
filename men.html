@@ -40,6 +40,7 @@
       width: 150px;
     }
 
+    /* DESKTOP Style: Fixed sidebar */
     .sidebar {
       position: fixed;
       top: 70px;
@@ -52,6 +53,7 @@
       background-color: #fff;
     }
 
+    /* DESKTOP Style: Content with margin */
     .content {
       margin-left: 270px;
       padding: 20px;
@@ -126,12 +128,52 @@
       font-size: 14px;
       color: #777;
     }
+
+    /*
+    --- NEW RESPONSIVE STYLES ---
+    This query targets tablets and phones (screens below 992px)
+    */
+    @media (max-width: 991.98px) {
+        
+        /* 1. Un-fix the sidebar and make it stack on top */
+        .sidebar {
+            position: static;
+            width: 100%;
+            height: auto;
+            overflow-y: visible;
+            border-right: none;
+            border-bottom: 1px solid #ddd;
+            top: auto;
+        }
+
+        /* 2. Remove the margin from content so it's full-width */
+        .content {
+            margin-left: 0;
+            padding: 15px; /* Smaller padding for mobile */
+        }
+
+        /* 3. Style the nav icons for the mobile menu */
+        .navbar-collapse .nav-icons {
+            margin-top: 1rem;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .navbar-collapse .search-box {
+            width: 100%;
+        }
+
+        .navbar-collapse .search-box input {
+            width: 100%; /* Make search input fill the box */
+        }
+    }
+
   </style>
 </head>
 
 <body>
 
-  <!-- Navbar -->
   <nav class="navbar navbar-expand-lg bg-white border-bottom sticky-top">
     <div class="container-fluid px-4">
       <a class="navbar-brand" href="index.html">
@@ -142,11 +184,8 @@
         <span class="navbar-toggler-icon"></span>
       </button>
 
-      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-        <ul class="navbar-nav gap-3">
-          <!-- <li class="nav-item"><a class="nav-link" href="#">New & Featured</a></li> -->
-
-          <!-- Men -->
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav gap-3 mx-auto">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="men.html" data-bs-toggle="dropdown">Men</a>
             <ul class="dropdown-menu">
@@ -158,7 +197,6 @@
             </ul>
           </li>
 
-          <!-- Women -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="women.html" data-bs-toggle="dropdown">Women</a>
             <ul class="dropdown-menu">
@@ -169,7 +207,6 @@
             </ul>
           </li>
 
-          <!-- Kids -->
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="kids.html" data-bs-toggle="dropdown">Kids</a>
             <ul class="dropdown-menu">
@@ -182,26 +219,25 @@
           <li class="nav-item"><a class="nav-link" href="sale.html">Sale</a></li>
           <li class="nav-item"><a class="nav-link" href="SNKRS.html">SNKRS</a></li>
         </ul>
+
+        <div class="nav-icons mt-3 mt-lg-0">
+          <div class="search-box">
+            <i class="bi bi-search"></i>
+            <input type="text" placeholder="Search">
+          </div>
+          <i class="bi bi-heart" style="font-size: 1.3rem;"></i>
+          <i class="bi bi-bag" style="font-size: 1.3rem;"></i>
+        </div>
       </div>
 
-      <div class="nav-icons ms-auto">
-        <div class="search-box">
-          <i class="bi bi-search"></i>
-          <input type="text" placeholder="Search">
-        </div>
-        <i class="bi bi-heart" style="font-size: 1.3rem;"></i>
-        <i class="bi bi-bag" style="font-size: 1.3rem;"></i>
       </div>
-    </div>
   </nav>
 
-  <!-- Sidebar -->
   <div class="sidebar">
     <h5 class="fw-bold mb-3">Men's Clothing</h5>
 
     <div class="accordion" id="sidebarAccordion">
 
-      <!-- Main Categories -->
       <div class="accordion-item border-0">
         <h2 class="accordion-header">
           <button class="accordion-button collapsed ps-0" data-bs-toggle="collapse" data-bs-target="#mainCategories">
@@ -222,7 +258,6 @@
         </div>
       </div>
 
-      <!-- Filters -->
       <div class="accordion-item mt-3 border-0">
         <h2 class="accordion-header">
           <button class="accordion-button collapsed ps-0" data-bs-toggle="collapse" data-bs-target="#filters">
@@ -232,9 +267,7 @@
         <div id="filters" class="accordion-collapse collapse show">
           <div class="accordion-body">
 
-            <!-- Add the dropdown filter list -->
             <div class="accordion" id="filterAccordion">
-              <!-- Gender -->
               <div class="accordion-item border-0">
                 <h2 class="accordion-header">
                   <button class="accordion-button collapsed ps-0" data-bs-toggle="collapse" data-bs-target="#gender">
@@ -250,7 +283,6 @@
                 </div>
               </div>
 
-              <!-- Shop By Price -->
               <div class="accordion-item border-0">
                 <h2 class="accordion-header">
                   <button class="accordion-button collapsed ps-0" data-bs-toggle="collapse" data-bs-target="#price">
@@ -266,7 +298,6 @@
                 </div>
               </div>
 
-              <!-- Sale & Offers -->
               <div class="accordion-item border-0">
                 <h2 class="accordion-header">
                   <button class="accordion-button collapsed ps-0" data-bs-toggle="collapse" data-bs-target="#sale">
@@ -282,7 +313,6 @@
                 </div>
               </div>
 
-              <!-- Add remaining filters as needed -->
               <div class="accordion-item border-0">
                 <h2 class="accordion-header">
                   <button class="accordion-button collapsed ps-0" data-bs-toggle="collapse"
@@ -320,7 +350,6 @@
     </div>
   </div>
 
-  <!-- Main Content -->
   <div class="content">
     <div class="d-flex justify-content-between align-items-center mb-3">
       <h4>Men's Clothing</h4>
@@ -331,7 +360,7 @@
     </div>
 
     <div class="row g-4">
-      <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="col-6 col-sm-6 col-md-4 col-lg-3">
         <div class="product-card">
           <img src="tshirt.avif" alt="Nike Dri-FIT T-Shirt">
           <div class="mt-2">
@@ -342,9 +371,10 @@
         </div>
       </div>
 
-      <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="col-6 col-sm-6 col-md-4 col-lg-3">
         <div class="product-card">
-          <img src="https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/692cdb67-6709-4e93-953d-e6157edc3b13/AIR+FORCE+1+%2707.png" alt="Nike Pro Tights">
+          <img src="https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/692cdb67-6709-4e93-953d-e6157edc3b13/AIR+FORCE+1+%2707.png"
+            alt="Nike Pro Tights">
           <div class="mt-2">
             <p class="bestseller mb-0">Bestseller</p>
             <h6 class="mb-1">Nike Shoes</h6>
@@ -354,7 +384,7 @@
         </div>
       </div>
 
-      <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="col-6 col-sm-6 col-md-4 col-lg-3">
         <div class="product-card">
           <img src="hoodies.avif" alt="Jordan Hoodie">
           <div class="mt-2">
@@ -366,7 +396,7 @@
         </div>
       </div>
 
-      <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="col-6 col-sm-6 col-md-4 col-lg-3">
         <div class="product-card">
           <img src="dryfithood.avif" alt="Nike Club Pants">
           <div class="mt-2">
@@ -377,7 +407,7 @@
         </div>
       </div>
 
-      <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="col-6 col-sm-6 col-md-4 col-lg-3">
         <div class="product-card">
           <img src="shorts.avif" alt="Nike Club Pants">
           <div class="mt-2">
@@ -388,7 +418,7 @@
         </div>
       </div>
 
-      <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="col-6 col-sm-6 col-md-4 col-lg-3">
         <div class="product-card">
           <img src="puff.avif" alt="Nike Club Pants">
           <div class="mt-2">
@@ -399,7 +429,7 @@
         </div>
       </div>
 
-      <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="col-6 col-sm-6 col-md-4 col-lg-3">
         <div class="product-card">
           <img src="bottom.avif" alt="Nike Club Pants">
           <div class="mt-2">
@@ -410,7 +440,7 @@
         </div>
       </div>
 
-      <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="col-6 col-sm-6 col-md-4 col-lg-3">
         <div class="product-card">
           <img src="M+J+BRK+WVN+PANT.avif" alt="Nike Club Pants">
           <div class="mt-2">
@@ -421,7 +451,7 @@
         </div>
       </div>
 
-      <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="col-6 col-sm-6 col-md-4 col-lg-3">
         <div class="product-card">
           <img
             src="https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/19f7ce2b-0a7b-4aca-90d9-7fd604d7085b/M+J+BRK+CLLGTE+HBR+PO+HD+LB.png"
@@ -434,7 +464,7 @@
         </div>
       </div>
 
-      <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="col-6 col-sm-6 col-md-4 col-lg-3">
         <div class="product-card">
           <img
             src="https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/u_126ab356-44d8-4a06-89b4-fcdcc8df0245,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/e4ad8fc7-4f24-495f-880f-eb5f0790ce48/M+J+DF+SPRT+COMP+SHORT.png"
@@ -447,7 +477,7 @@
         </div>
       </div>
 
-      <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="col-6 col-sm-6 col-md-4 col-lg-3">
         <div class="product-card">
           <img
             src="https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/4784ee48-8a77-40d0-b5b7-f1c71399d70d/AS+M+NK+AIR+FOOTBALL+LS+TOP.png"
@@ -460,7 +490,7 @@
         </div>
       </div>
 
-      <div class="col-sm-6 col-md-4 col-lg-3">
+      <div class="col-6 col-sm-6 col-md-4 col-lg-3">
         <div class="product-card">
           <img
             src="https://static.nike.com/a/images/t_web_pw_592_v2/f_auto/2a3df87e-71ee-489c-b9d9-bfca144436b4/MIL+MNK+DF+SWGMN+JSY+ICN+22.png"
@@ -475,7 +505,6 @@
     </div>
   </div>
 
-  <!-- Footer -->
   <footer>
     <div class="container">
       <div class="row">
